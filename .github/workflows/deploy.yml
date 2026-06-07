@@ -1,0 +1,24 @@
+name: Deploy nodejs app in excloud
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy on excloud server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 210.79.128.162
+          username: ubuntu
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            cd /home/ubuntu/CI-CD-learning-ChaiCode
+            npm install
+            pm2 restart 0
