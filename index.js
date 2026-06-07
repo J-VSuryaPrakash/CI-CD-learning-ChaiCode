@@ -3,7 +3,7 @@ const app = express();
 const port = 8000;
 
 app.get('/', (req, res) => {
-  res.status(200).send({'message': 'Server is healthy and successfully and added PM2. Added Github Actions for CI/CD pipeline.'});
+  res.status(200).send({'message': 'Server is healthy and successfully and added PM2.', "status": "Github Actions"});
 });
 
 app.listen(port, () => {
