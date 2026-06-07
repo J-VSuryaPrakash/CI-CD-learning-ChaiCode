@@ -3,7 +3,7 @@ const app = express();
 const port = 8000;
 
 app.get('/', (req, res) => {
-  res.status(200).send({'message': 'Server is healthy and successfully able to connect via http://210.79.128.162:8000/'});
+  res.status(200).send({'message': 'Server is healthy and successfully and added PM2. '});
 });
 
 app.listen(port, () => {
