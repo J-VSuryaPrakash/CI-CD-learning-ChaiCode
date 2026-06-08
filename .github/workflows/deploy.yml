@@ -35,9 +35,12 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            cd /home/ubuntu/CI-CD-learning-ChaiCode
-            git pull
-            npm install
-            pm2 restart 0
+            # Stop and remove existing container if it exists
+            docker rm -f chaicode-node-container || true
+            docker rm chaicode-node-container || true
+            # Pull the fresh image from hub
+            docker pull vspj10/chaicode-node:latest
+            # Run the new container
+            docker run -d --name chaicode-node-container -p 8000:8000 vspj10/chaicode-node:latest
+            # Clean up old/unused images
+            docker image prune -f
