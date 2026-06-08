@@ -3,7 +3,7 @@ const app = express();
 const port = 8000;
 
 app.get('/', (req, res) => {
-  res.status(200).send({'message': 'Server is healthy and successfully and added PM2. Deploying a containerized image', "status": "Github Actions"});
+  res.status(200).send({'message': 'Server is healthy and successfully and set up workflow for deploying containerized images', "status": "Github Actions"});
 });
 
 app.listen(port, () => {
