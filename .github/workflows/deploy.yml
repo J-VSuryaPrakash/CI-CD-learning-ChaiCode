@@ -41,6 +41,6 @@ jobs:
             # Pull the fresh image from hub
             sudo docker pull vspj10/chaicode-node:latest
             # Run the new container
-            sudo docker run -d --name chaicode-node-container -p 8000:8000 vspj10/chaicode-node:latest
+            sudo docker run -d --name chaicode-node-container -p 80:8000 vspj10/chaicode-node:latest
             # Clean up old/unused images
             sudo docker image prune -f
