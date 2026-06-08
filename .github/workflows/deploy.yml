@@ -36,11 +36,11 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
             # Stop and remove existing container if it exists
-            docker rm -f chaicode-node-container || true
-            docker rm chaicode-node-container || true
+            sudo docker stop chaicode-node-container || true
+            sudo docker rm chaicode-node-container || true
             # Pull the fresh image from hub
-            docker pull vspj10/chaicode-node:latest
+            sudo docker pull vspj10/chaicode-node:latest
             # Run the new container
-            docker run -d --name chaicode-node-container -p 8000:8000 vspj10/chaicode-node:latest
+            sudo docker run -d --name chaicode-node-container -p 8000:8000 vspj10/chaicode-node:latest
             # Clean up old/unused images
-            docker image prune -f
+            sudo docker image prune -f
